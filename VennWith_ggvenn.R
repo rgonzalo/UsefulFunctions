@@ -1,7 +1,7 @@
-#data1 = toptable1 with features as rownames (Intereseting columns should be labeled "logFC", "Pvalue", "Adj.Pval")
-#data2 = toptable2 with features as rownames (Intereseting columns should be labeled "logFC", "Pvalue", "Adj.Pval")
+#data1 = toptable1 with features as rownames (Intereseting columns should be labeled "log2FC", "Pvalue", "Adj.Pval")
+#data2 = toptable2 with features as rownames (Intereseting columns should be labeled "log2FC", "Pvalue", "Adj.Pval")
 #upreg = Logical value indicating if upregulated or downregulated features (default "upregulated")
-#limitFC = Numerical value indicating absolute threshold for logFC
+#limitFC = Numerical value indicating absolute threshold for log2FC
 #useAdjP = logical value indicating if use Adjusted P value for feature selection (default = TRUE)
 #limitPvalue = numerical value indicating threshold for pvalue or adjusted pvalue. 
 #comp1 = Name of comparison 1
@@ -28,8 +28,8 @@ vennplot_2 <- function (data1,
     if(useAdjP){
       comp.name1 <- paste0(comp1, ".UP")
       comp.name2 <- paste0(comp2, ".UP")
-      df1.up <- subset(data1, logFC > limitFC & Adj.Pval < limitPvalue)
-      df2.up <- subset(data2, logFC > limitFC & Adj.Pval < limitPvalue)
+      df1.up <- subset(data1, log2FC > limitFC & Adj.Pval < limitPvalue)
+      df2.up <- subset(data2, log2FC > limitFC & Adj.Pval < limitPvalue)
       list.df.UP <- list(list1 = rownames(df1.up), list2 = rownames(df2.up))
       names(list.df.UP) <- c(comp.name1, comp.name2)
       #Draw the plot
@@ -59,8 +59,8 @@ vennplot_2 <- function (data1,
       } else {
         comp.name1 <- paste0(comp1, ".UP")
         comp.name2 <- paste0(comp2, ".UP")
-        df1.up <- subset(data1, logFC > limitFC & Pvalue < limitPvalue)
-        df2.up <- subset(data2, logFC > limitFC & Pvalue < limitPvalue)
+        df1.up <- subset(data1, log2FC > limitFC & Pvalue < limitPvalue)
+        df2.up <- subset(data2, log2FC > limitFC & Pvalue < limitPvalue)
         list.df.UP <- list(list1 = rownames(df1.up), list2 = rownames(df2.up))
         names(list.df.UP) <- c(comp.name1, comp.name2)
         #Draw the plot and print
@@ -91,8 +91,8 @@ vennplot_2 <- function (data1,
       if(useAdjP) {
         comp.name1 <- paste0(comp1, ".DOWN")
         comp.name2 <- paste0(comp2, ".DOWN")
-        df1.down <- subset(data1, logFC < -limitFC & Adj.Pval < limitPvalue)
-        df2.down <- subset(data2, logFC < -limitFC & Adj.Pval < limitPvalue)
+        df1.down <- subset(data1, log2FC < -limitFC & Adj.Pval < limitPvalue)
+        df2.down <- subset(data2, log2FC < -limitFC & Adj.Pval < limitPvalue)
         list.df.down <- list(list1 = rownames(df1.down), list2 = rownames(df2.down))
         names(list.df.down) <- c(comp.name1, comp.name2)
         #Draw the plot
@@ -122,8 +122,8 @@ vennplot_2 <- function (data1,
       } else {
         comp.name1 <- paste0(comp1, ".DOWN")
         comp.name2 <- paste0(comp2, ".DOWN")
-        df1.down <- subset(data1, logFC < -limitFC & Pvalue < limitPvalue)
-        df2.down <- subset(data2, logFC < -limitFC & Pvalue < limitPvalue)
+        df1.down <- subset(data1, log2FC < -limitFC & Pvalue < limitPvalue)
+        df2.down <- subset(data2, log2FC < -limitFC & Pvalue < limitPvalue)
         list.df.down <- list(list1 = rownames(df1.down), list2 = rownames(df2.down))
         names(list.df.down) <- c(comp.name1, comp.name2)
         #Draw the plot

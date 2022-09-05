@@ -1,5 +1,5 @@
 
-# topTab: Typical "limma" toptable with colnames as "logFC", "Adj.Pval" and "Pvalue"
+# topTab: Typical "limma" toptable with colnames as "log2FC", "Adj.Pval" and "Pvalue"
 ##### adj0: p.valor adjustat pel qual filtrar (de normal, 0.01)
 ##### adj1: segon p.valor adjustat pel qual filtrar (de normal, 0.05)
 ##### adj2: tercer p.valor adjustat pel qual filtrar (de normal, 0.15)
@@ -10,20 +10,20 @@
 
 genesSelectable <- function (topTab, adj0 = 0.01, adj1 = 0.05, adj2 = 0.15, P1 = 0.01, P2 = 0.05)
 {
-  upBelowAdj0 <- nrow(subset(topTab, Adj.Pval < adj0 & logFC > 0))
-  downBelowAdj0 <- nrow(subset(topTab, Adj.Pval < adj0 & logFC < 0))
+  upBelowAdj0 <- nrow(subset(topTab, Adj.Pval < adj0 & log2FC > 0))
+  downBelowAdj0 <- nrow(subset(topTab, Adj.Pval < adj0 & log2FC < 0))
   
-  upBelowAdj1 <- nrow(subset(topTab, Adj.Pval < adj1 & logFC > 0))
-  downBelowAdj1 <- nrow(subset(topTab, Adj.Pval < adj1 & logFC < 0))
+  upBelowAdj1 <- nrow(subset(topTab, Adj.Pval < adj1 & log2FC > 0))
+  downBelowAdj1 <- nrow(subset(topTab, Adj.Pval < adj1 & log2FC < 0))
   
-  upBelowAdj2 <- nrow(subset(topTab, Adj.Pval < adj2 & logFC > 0))
-  downBelowAdj2 <- nrow(subset(topTab, Adj.Pval < adj2 & logFC < 0))
+  upBelowAdj2 <- nrow(subset(topTab, Adj.Pval < adj2 & log2FC > 0))
+  downBelowAdj2 <- nrow(subset(topTab, Adj.Pval < adj2 & log2FC < 0))
   
-  upBelowP1 <- nrow(subset(topTab, Pvalue < P1 & logFC > 0))
-  downBelowP1 <- nrow(subset(topTab, Pvalue < P1 & logFC < 0))
+  upBelowP1 <- nrow(subset(topTab, Pvalue < P1 & log2FC > 0))
+  downBelowP1 <- nrow(subset(topTab, Pvalue < P1 & log2FC < 0))
   
-  upBelowP2 <- nrow(subset(topTab, Pvalue < P2 & logFC > 0))
-  downBelowP2 <- nrow(subset(topTab, Pvalue < P2 & logFC < 0))
+  upBelowP2 <- nrow(subset(topTab, Pvalue < P2 & log2FC > 0))
+  downBelowP2 <- nrow(subset(topTab, Pvalue < P2 & log2FC < 0))
   
   return(c(upRegAdj0.01 = upBelowAdj0, downRegAdj0.01 = downBelowAdj0,
            upRegAdj0.05 = upBelowAdj1, downRegAdj0.05 = downBelowAdj1,
